@@ -18,5 +18,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+
+        // This method simplify seeder population 
+        $this->call([
+            ComicSeeder::class
+        ]);
     }
 }
