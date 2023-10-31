@@ -7,5 +7,19 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    //
+    function index()
+    {
+        return view('welcome');
+    }
+
+    function comics()
+    {
+        $comics = config('comics');
+        return view('comics', compact('comics'));
+    }
+
+    function about()
+    {
+        return view('about');
+    }
 }
