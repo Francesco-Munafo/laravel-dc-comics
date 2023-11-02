@@ -3,7 +3,9 @@
         <div class="row row-cols-1 row-cols-sm-3">
             <div class="col">
                 <h3>Company</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut sed dolore fugit odit magni quae rerum velit molestiae. Cum architecto vel incidunt dolore perferendis pariatur enim provident tempora delectus adipisci.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut sed dolore fugit odit magni quae rerum
+                    velit molestiae. Cum architecto vel incidunt dolore perferendis pariatur enim provident tempora
+                    delectus adipisci.</p>
             </div>
             <!-- /.col -->
             <div class="col">
@@ -28,6 +30,11 @@
             <!-- /.col -->
         </div>
         <!-- /.row row-cols-1 row-cols-sm-3 -->
+        <div class="row row-cols-1">
+            <div class="col">
+                <h6 class="text-center">Copyright &copy; Francesco Munafo'</h6>
+            </div>
+        </div>
     </div>
     <!-- /.container -->
 
