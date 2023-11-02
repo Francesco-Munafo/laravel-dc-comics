@@ -19,5 +19,5 @@ class Comic extends Model
         'writers' => 'array',
     ];
 
-    protected $fillable = ['title', 'description', 'price', 'thumb'];
+    protected $fillable = ['title', 'description', 'price', 'thumb', 'sale_date', 'series', 'type'];
 }

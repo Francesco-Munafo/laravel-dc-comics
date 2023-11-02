@@ -6,7 +6,7 @@
             <a class="nav-link" href="{{ route('about') }}">About</a>
         </div>
         <div class="admin ms-auto me-3">
-            <a class="btn btn-primary" href="#">Admin</a>
+            <a class="btn btn-primary" href="{{ route('home') }}">Guest</a>
         </div>
     </nav>
 </header>

@@ -9,17 +9,17 @@
             <div class="col-6 d-flex flex-column">
                 <h1>{{ $comic->title }}</h1>
                 <div class="row py-4">
-                    <div class="col-3 text-center">
-                        <h5>{{ $comic->series }}</h5>
+                    <div class="col-6 text-center">
+                        <h5>Series: {{ $comic->series }}</h5>
                     </div>
-                    <div class="col-3 text-center">
-                        <h5>{{ $comic->price }}</h5>
+                    <div class="col-6 text-center">
+                        <h5>Price: {{ $comic->price }}</h5>
                     </div>
-                    <div class="col-3 text-center">
-                        <h5>{{ $comic->sale_date }}</h5>
+                    <div class="col-6 text-center">
+                        <h5>Sale date: {{ Carbon\Carbon::parse($comic->sale_date)->format('m/d/Y') }}</h5>
                     </div>
-                    <div class="col-3 text-center">
-                        <h5>{{ $comic->type }}</h5>
+                    <div class="col-6 text-center">
+                        <h5>Type: {{ $comic->type }}</h5>
                     </div>
                 </div>
 
