@@ -1,2 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
 
+.jumbo{
+    background-image: url(../img/jumbotron.jpg);
+    background-size: cover;
+    height: 400px;
+  }
+
+  .col-6 > img{
+    width: 100%;
+  }

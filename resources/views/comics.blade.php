@@ -1,30 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container py-5">
+        <div class="row row-cols-6">
+            @forelse($comics as $comic)
+                <a class=" text-decoration-none mb-5" href="{{ route('show', $comic->id) }}">
+                    <div class="col  h-100">
+                        <div class="card shadow h-100">
 
-<div class="container py-5">
-    <div class="row row-cols-6">
-        @forelse($comics as $comic)
-        <div class="col mb-5">
-            <div class="card h-100">
 
+                            <div class="comic_img">
+                                @if (str_contains($comic->thumb, 'http'))
+                                    <img class="object-fit-cover w-100" height="255" src="{{ $comic->thumb }}"
+                                        alt="">
+                                @else
+                                    <img class="object-fit-cover w-100" height="255"
+                                        src="{{ asset('storage/' . $comic->thumb) }}" alt="">
+                                @endif
 
-                <div class="comic_img">
-                    <img class="object-fit-cover w-100" height="255" src="{{ $comic['thumb'] }}" alt="">
-                </div>
-                <div class="card-body">
-                    <h6 class="">{{$comic['title']}}</h6>
-                    <h6 class="">{{$comic['series']}}</h6>
-                    <h6 class="">{{$comic['price']}}</h6>
-                </div>
-            </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="">{{ $comic['title'] }}</h6>
+                                <h6 class="">{{ $comic['series'] }}</h6>
+                                <h6 class="">{{ $comic['price'] }}</h6>
+                            </div>
+                        </div>
 
+                    </div>
+                @empty
+                    <h3>No comics available yet</h3>
+            @endforelse
         </div>
-        @empty
-        <h3>No comics available yet</h3>
-        @endforelse
-        <button class="btn btn-primary rounded-0 mx-auto">LOAD MORE</button>
-    </div>
-</div>
+        </a>
+        <div class="row">
 
+            <button class="btn btn-primary rounded-0 w-25 mx-auto">LOAD MORE</button>
+        </div>
+    </div>
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 
 @section('title', 'Comic')
@@ -60,7 +60,6 @@
 
                         </ul>
                     </div>
-                    <a class="btn btn-primary" href="{{ route('comics.edit', $comic->id) }}">Edit</a>
                 </div>
             </div>
             <div class="col-6 text-center">

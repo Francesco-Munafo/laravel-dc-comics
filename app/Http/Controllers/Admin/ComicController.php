@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Comic;
+use Illuminate\Support\Facades\Storage;
+
 
 class ComicController extends Controller
 {
@@ -29,7 +31,18 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->has('thumb')) {
+
+            $file_path = Storage::put('comics_images', $request->thumb);
+        }
+
+        $new_comic = new Comic();
+        $new_comic->title = $request['title'];
+        $new_comic->price = $request['price'];
+        $new_comic->thumb = $file_path;
+        $new_comic->save();
+
+        return to_route('comics.index');
     }
 
     /**
@@ -45,7 +58,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('admin.comics.edit', compact('comic'));
     }
 
     /**
@@ -53,7 +66,16 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+        $data = $request->all();
+
+        if ($request->has('thumb')) {
+            $file_path = Storage::put('comics_images', $request->thumb);
+            $data['thumb'] = $file_path;
+
+            $comic->update($data);
+
+            return to_route('comics.show', $comic);
+        }
     }
 
     /**

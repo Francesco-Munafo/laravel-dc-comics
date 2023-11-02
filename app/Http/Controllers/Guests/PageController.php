@@ -15,11 +15,16 @@ class PageController extends Controller
 
     function comics()
     {
-        return view('admin.comics.index' . ['comic' => Comic::all()]);
+        return view('comics', ['comics' => Comic::all()]);
     }
 
     function about()
     {
         return view('about');
+    }
+
+    function show(Comic $comic)
+    {
+        return view('show', ['comic' => $comic]);
     }
 }
