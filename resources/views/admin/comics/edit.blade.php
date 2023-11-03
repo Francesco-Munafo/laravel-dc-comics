@@ -7,6 +7,8 @@
 
             @method('PUT')
 
+            <h1>Editing "{{ $comic->title }}"</h1>
+
             <div class="mb-3">
                 <label for="name" class="form-label">Title</label>
                 <input type="text" class="form-control" name="title" id="title" aria-describedby="helpTitle"
