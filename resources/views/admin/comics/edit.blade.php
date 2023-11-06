@@ -5,6 +5,15 @@
         <form action="{{ route('comics.update', $comic) }}" method="POST" enctype="multipart/form-data">
             @csrf
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             @method('PUT')
 
             <h1>Editing "{{ $comic->title }}"</h1>

@@ -33,4 +33,12 @@ class StoreComicRequest extends FormRequest
 
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Devi inserire un titolo di almeno 5 caratteri!',
+            'min.string' => 'Il campo deve essere almeno 5 caratteri'
+        ];
+    }
 }
