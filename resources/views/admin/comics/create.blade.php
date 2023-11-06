@@ -5,10 +5,23 @@
         <form action="{{ route('comics.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="mb-3">
                 <label for="name" class="form-label">Title</label>
-                <input type="text" class="form-control" name="title" id="title" aria-describedby="helpTitle"
-                    placeholder="Insert a comic title">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="title" id="title"
+                    aria-describedby="helpTitle" placeholder="Insert a comic title">
+                @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">

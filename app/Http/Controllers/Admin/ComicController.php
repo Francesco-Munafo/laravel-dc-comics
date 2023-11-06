@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreComicRequest;
+use App\Http\Requests\UpdateComicRequest;
 use App\Models\Comic;
 use Illuminate\Support\Facades\Storage;
 
@@ -29,16 +31,19 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
+
+        $val_data = $request->validated();
+
         if ($request->has('thumb')) {
 
-            $file_path = Storage::put('comics_images', $request->thumb);
+            $file_path = Storage::put('comics_images', $val_data->thumb);
         }
 
         $new_comic = new Comic();
-        $new_comic->title = $request['title'];
-        $new_comic->price = $request['price'];
+        $new_comic->title = $val_data['title'];
+        $new_comic->price = $val_data['price'];
         $new_comic->thumb = $file_path;
         $new_comic->save();
 
@@ -64,16 +69,22 @@ class ComicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comic $comic)
+    public function update(UpdateComicRequest $request, Comic $comic)
     {
-        $data = $request->all();
+        $val_data = $request->validated();
 
-        if ($request->has('thumb') && $comic->thumb) {
-            Storage::delete($comic->thumb);
-            $file_path = Storage::put('comics_images', $request->thumb);
-            $data['thumb'] = $file_path;
+        if ($request->has('thumb')) {
+            $newImageFile = $request->thumb;
+            $file_path = Storage::put('comics_images', $newImageFile);
+            if (!is_null($comic->thumb) && Storage::fileExists($comic->thumb)) {
+
+                Storage::delete($comic->thumb);
+            }
+
+            $val_data['thumb'] = $file_path;
         }
-        $comic->update($data);
+
+        $comic->update($val_data);
 
         return to_route('comics.show', $comic);
     }
