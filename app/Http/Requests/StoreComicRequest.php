@@ -25,8 +25,8 @@ class StoreComicRequest extends FormRequest
 
             'title' => 'bail|required|min:5|max:50',
             'description' => 'bail|nullable|min:5|max:1000',
-            'thumb' => 'bail|nullable|image|max:1000',
-            'price' => 'baul|required|min:4|max:8',
+            'thumb' => 'bail|nullable|image|max:5000',
+            'price' => 'bail|required|max:8',
             'series' => 'bail|nullable|min:3|max:50',
             'sale_date' => 'bail|nullable|date',
             'type' => 'bail|nullable|min:3|max:50',

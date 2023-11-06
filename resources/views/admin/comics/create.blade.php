@@ -18,7 +18,7 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Title</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="title" id="title"
-                    aria-describedby="helpTitle" placeholder="Insert a comic title">
+                    aria-describedby="helpTitle" placeholder="Insert a comic title" value="{{ old('title') }}">
                 @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -27,7 +27,8 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Description</label>
                 <input type="text" class="form-control" name="description" id="description"
-                    aria-describedby="helpDescription" placeholder="Insert a comic description">
+                    aria-describedby="helpDescription" placeholder="Insert a comic description"
+                    value="{{ old('description') }}">
             </div>
 
             <div class="mb-3">
@@ -38,25 +39,25 @@
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
                 <input type="text" class="form-control" name="price" id="price" aria-describedby="helpPrice"
-                    placeholder="Insert a comic price" value="$">
+                    placeholder="Insert a comic price" value="{{ old('price') }}">
             </div>
 
             <div class="mb-3">
                 <label for="series" class="form-label">Series</label>
                 <input type="text" class="form-control" name="series" id="series" aria-describedby="helpSeries"
-                    placeholder="Insert a comic series">
+                    placeholder="Insert a comic series" value="{{ old('series') }}">
             </div>
 
             <div class="mb-3">
                 <label for="type" class="form-label">Type</label>
                 <input type="text" class="form-control" name="type" id="type" aria-describedby="helpType"
-                    placeholder="Insert a comic type">
+                    placeholder="Insert a comic type" value="{{ old('type') }}">
             </div>
 
             <div class="mb-3">
                 <label for="sale_date" class="form-label">Sale Date</label>
                 <input type="date" class="form-control" name="sale_date" id="sale_date" aria-describedby="helpDate"
-                    placeholder="Insert a comic sale date">
+                    placeholder="Insert a comic sale date" value="{{ old('sale_date') }}">
             </div>
 
             <button class="btn btn-primary" type="submit">Submit</button>

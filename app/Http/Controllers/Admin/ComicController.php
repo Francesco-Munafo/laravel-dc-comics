@@ -38,7 +38,7 @@ class ComicController extends Controller
 
         if ($request->has('thumb')) {
 
-            $file_path = Storage::put('comics_images', $val_data->thumb);
+            $file_path = Storage::put('comics_images', $val_data['thumb']);
         }
 
         $new_comic = new Comic();
